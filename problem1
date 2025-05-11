@@ -1,4 +1,10 @@
-m= input('Enter first name : ')
-n= input('Enter second name : ')
-l = m+' '+n
-print("Hello, "+ l +" Welcome to the Python program.")# python
+m = input('Enter first number: ')
+n = input("Enter second number: ")
+n = float(n)
+m = float(m)
+print('Addition :' ,m+n)
+print('Subtraction :' ,m-n)
+print('Multiplication :' ,m*n)
+print('Divsion :' ,m/n)
+
+
