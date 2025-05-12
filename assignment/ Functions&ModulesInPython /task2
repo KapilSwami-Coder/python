@@ -1,0 +1,11 @@
+from math import  *
+n = int(input('Enter a number: '))
+
+squareroot = isqrt(n)
+print("Square root :",squareroot)
+log_value = log(n)
+
+print('logarithems: ',log_value)
+
+sin_value = sin(n)
+print('sine: ',sin_value)
