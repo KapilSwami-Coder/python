@@ -1,0 +1,5 @@
+total=0
+for i in range(50):
+    total += i
+
+print("The sum of 1 to 50 number is :",total)
