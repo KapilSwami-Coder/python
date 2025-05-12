@@ -3,4 +3,4 @@ n = int(input("Enter a number: "))
 if n%2 ==0:
     print("Given number is even")
 else:
-    print("Enter vlue is invalid")
+    print("Given number is odd")
