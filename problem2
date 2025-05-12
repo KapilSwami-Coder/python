@@ -1,4 +1,0 @@
-m= input('Enter first name : ')
-n= input('Enter second name : ')
-l = m+' '+n
-print("Hello, "+ l +" Welcome to the Python program.")
