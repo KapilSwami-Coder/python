@@ -1,0 +1,10 @@
+m = input('Enter first number: ')
+n = input("Enter second number: ")
+n = float(n)
+m = float(m)
+print('Addition :' ,m+n)
+print('Subtraction :' ,m-n)
+print('Multiplication :' ,m*n)
+print('Divsion :' ,m/n)
+
+
