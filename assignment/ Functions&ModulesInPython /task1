@@ -1,0 +1,9 @@
+n = int(input("Enter a number: "))
+def factorial(m):
+    if m <2:
+     return 1
+    else:
+        return m*factorial(m-1)
+result = factorial(n)
+
+print(result)
