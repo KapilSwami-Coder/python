@@ -1,0 +1,10 @@
+try:
+    file = open('simple.txt','r')
+    reading_file = file.readlines()
+    print(reading_file)
+    file.close()
+except FileNotFoundError:
+    print("Error : The file 'simple.txt' not found")
+
+ 
+ 
