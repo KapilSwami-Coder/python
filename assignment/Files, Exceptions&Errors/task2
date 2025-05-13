@@ -1,0 +1,27 @@
+n = input('Enter text to write in file :')
+
+file1 = open('file.txt','w')
+writing_file = file1.write(n)
+print("Data successfully  written in file.txt")
+file1.close()
+
+# file1 = open('file.txt','r')
+# w_file = file1.read()
+# print(w_file )
+# file1.close()
+
+m = input('Enter  additional text to append :')
+
+file1 = open('file.txt','a')
+writing_file1 = file1.write(m)
+print("Data successfully  appended")
+file1.close()
+
+print('Final content of file.txt :')
+file1 = open('file.txt','r')
+w_file = file1.read()
+print(w_file )
+file1.close()
+
+
+
