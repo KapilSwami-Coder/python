@@ -1,0 +1,7 @@
+mark = {'kapil':90,'robin': 92,'mike':99,'rubi':100}
+n = input("Enter the student's name: ")
+
+if n in mark:
+    print(n,'marks:',mark[n])
+else:
+    print("Data not found")
