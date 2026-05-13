@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>{{ exam.title or 'Exam' }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='account.css') }}">
+</head>
+
+<body class="student-page">
+    <header class="prof-header">
+        <span class="prof-brand">{{ exam.title or 'Exam' }}</span>
+        <nav class="prof-nav">
+            <a class="nav-tab" href="{{ url_for('exam') }}">← All exams</a>
+        </nav>
+        <form action="/logout" method="POST" class="prof-logout">
+            <button type="submit">Logout</button>
+        </form>
+    </header>
+
+    <main class="prof-main">
+        <p class="prof-hint">Course: <strong>{{ exam.course or '—' }}</strong> &nbsp;|&nbsp; Year: {{ exam.year }} &nbsp;|&nbsp; Batch: {{ exam.batch }}</p>
+        {% if exam.instructions %}
+        <div class="course-meta-readonly">
+            <strong>Instructions</strong>
+            <p style="white-space:pre-wrap;">{{ exam.instructions }}</p>
+        </div>
+        {% endif %}
+
+        <h2>Questions</h2>
+        {% for q in questions %}
+        <div class="q-block" style="margin-bottom:1rem;">
+            <p><strong>Q{{ q.question_no }}.</strong> {{ q.q_text }} <span class="prof-hint">({{ q.mark }} marks)</span></p>
+            {% if q.q_type == 'mcq' %}
+            <ul style="list-style:none;padding-left:0;">
+                <li>A) {{ q.opt_a or '—' }}</li>
+                <li>B) {{ q.opt_b or '—' }}</li>
+                <li>C) {{ q.opt_c or '—' }}</li>
+                <li>D) {{ q.opt_d or '—' }}</li>
+            </ul>
+            {% else %}
+            <p class="prof-hint">Written / subjective — answer yahan submit abhi implement nahi hai.</p>
+            {% endif %}
+        </div>
+        {% else %}
+        <p class="prof-empty">Is exam me abhi koi question save nahi hua.</p>
+        {% endfor %}
+    </main>
+</body>
+
+</html>

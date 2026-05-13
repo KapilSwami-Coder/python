@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Student</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='account.css') }}">
+</head>
+
+<body class="student-page">
+    <header class="prof-header">
+        <span class="prof-brand">Welcome, {{ name }}</span>
+        <nav class="prof-nav">
+            <a class="nav-tab active" href="{{ url_for('login', input_uid=uid) }}">Home</a>
+            <a class="nav-tab" href="{{ url_for('exam') }}">Exams</a>
+            <span class="nav-tab nav-tab-disabled">Result</span>
+        </nav>
+        <form action="/logout" method="POST" class="prof-logout">
+            <button type="submit">Logout</button>
+        </form>
+    </header>
+
+    <main class="prof-main">
+        <h1>Home</h1>
+        {% if profile %}
+        <div class="course-meta-readonly">
+            <p><strong>Admission year:</strong> {{ profile.admission_year }}</p>
+            <p><strong>Batch:</strong> {{ profile.batch }} &nbsp;|&nbsp; <strong>Branch:</strong> {{ profile.branch }}</p>
+            <p class="prof-hint">Exams list sirf isi year / batch se match hone wale dikhayenge.</p>
+        </div>
+        {% else %}
+        <p class="prof-empty">Student profile <code>student</code> table me missing hai — admin se <code>user_id</code> ke saath row add karwayen.</p>
+        {% endif %}
+        <p><a class="btn-primary" style="display:inline-block;text-decoration:none;padding:0.45rem 1rem;border-radius:6px;" href="{{ url_for('exam') }}">Available exams</a></p>
+    </main>
+</body>
+
+</html>

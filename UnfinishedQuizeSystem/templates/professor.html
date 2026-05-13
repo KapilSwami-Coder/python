@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Professor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='account.css') }}">
+</head>
+
+<body class="professor-page" data-page="professor">
+    <header class="prof-header">
+        <span class="prof-brand">Welcome, {{ name }}</span>
+        <nav class="prof-nav">
+            <button type="button" class="nav-tab active" data-panel="home">Home</button>
+            <button type="button" class="nav-tab" data-panel="exam">Exam</button>
+            <button type="button" class="nav-tab" data-panel="result">Result</button>
+        </nav>
+        <form action="/logout" method="POST" class="prof-logout">
+            <button type="submit">Logout</button>
+        </form>
+    </header>
+
+    <main class="prof-main">
+        <section id="panel-home" class="prof-panel">
+            <h1>Your courses</h1>
+            <p class="prof-hint">These come from your account in the database.</p>
+            <div id="course-list-home" class="course-grid"></div>
+        </section>
+
+        <section id="panel-exam" class="prof-panel hidden">
+            <h1>Exams by course</h1>
+            <p class="prof-hint">Pick a course to build an exam for that batch and year only.</p>
+            <div id="course-list-exam" class="course-grid"></div>
+        </section>
+
+        <section id="panel-result" class="prof-panel hidden">
+            <h1>Results</h1>
+            <p class="prof-hint">This section is not wired yet.</p>
+        </section>
+
+        <section id="panel-create" class="prof-panel hidden">
+            <button type="button" class="btn-secondary" id="btn-back-create">← Back</button>
+            <h2>Create exam</h2>
+            <div id="create-course-meta" class="course-meta-readonly"></div>
+            <div class="exam-fields">
+                <label class="block-label">Exam title
+                    <input type="text" id="exam_title" placeholder="e.g. Unit test 1" required>
+                </label>
+                <label class="block-label">Instructions (optional)
+                    <textarea id="exam_instructions" rows="4" placeholder="Rules, duration notes, etc."></textarea>
+                </label>
+            </div>
+            <div id="question-container" class="question-container"></div>
+            <div class="quiz-actions">
+                <button type="button" onclick="addMcqField()">+ Add MCQ</button>
+                <button type="button" onclick="addWrittenField()">+ Add written question</button>
+            </div>
+            <hr>
+            <button type="button" id="btn-finish-upload" class="btn-primary" onclick="submitCompleteQuiz()">Finish &amp; upload quiz</button>
+        </section>
+    </main>
+
+    <script>
+        window.__PROFESSOR_COURSES__ = {{ courses|tojson }};
+    </script>
+    <script src="{{ url_for('static', filename='uploadexam.js') }}"></script>
+</body>
+
+</html>

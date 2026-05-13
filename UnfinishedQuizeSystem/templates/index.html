@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title> html page</title>
+</head>
+
+<body>
+    <form method="POST" action="\">
+        
+    {{ form.hidden_tag() }}     <!--   for secuirty reason (CSRT Cross-Site Request Forgery) -->
+
+
+        <p>
+            {{form.rollno.label}}<br>
+            {{form.rollno(size = 32)}}<br>
+        </p> 
+         <p>
+            {{form.password.label}}<br>
+            {{form.password(size = 32)}}<br>
+        </p>   
+         {{form.submit()}}
+    </form>
+<h3>Login here</h3>
+</body>
+
+</html>

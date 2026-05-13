@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Exams</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='account.css') }}">
+</head>
+
+<body class="student-page">
+    <header class="prof-header">
+        <span class="prof-brand">{{ name }} — Exams</span>
+        <nav class="prof-nav">
+            <a class="nav-tab" href="{{ url_for('login', input_uid=uid) }}">Home</a>
+            <a class="nav-tab active" href="{{ url_for('exam') }}">Exams</a>
+        </nav>
+        <form action="/logout" method="POST" class="prof-logout">
+            <button type="submit">Logout</button>
+        </form>
+    </header>
+
+    <main class="prof-main">
+        <h1>Your exams</h1>
+        {% if not has_profile %}
+        <p class="prof-empty">Pehle <code>student</code> table me apni profile row add karo — tab hi sahi exams filter honge.</p>
+        {% elif exams|length == 0 %}
+        <p class="prof-empty">Abhi koi exam nahi mila. Institute, admission year, aur batch (number) professor ke exam se match hone chahiye.</p>
+        {% else %}
+        <ul class="exam-link-list">
+            {% for e in exams %}
+            <li>
+                <a href="{{ url_for('exam_detail', exam_id=e.id) }}">{{ e.title or ('Exam #' ~ e.id) }}</a>
+                {% if e.course %}<span class="prof-hint"> — {{ e.course }}</span>{% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <p><a href="{{ url_for('login', input_uid=uid) }}">← Back to home</a></p>
+    </main>
+</body>
+
+</html>

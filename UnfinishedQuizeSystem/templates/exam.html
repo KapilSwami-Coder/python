@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title> Student_account</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='account.css') }}">
+</head>
+
+<body>
+    <header>
+        <p>Home</p>
+        <p>Exam</p>
+        <p>Result</p>
+        <form action="/logout" method="POST">
+            <button type="submit">Logout</button>
+        </form>
+        <!-- <p method="POST" action="/logout">Logout</p> -->
+    </header>
+    <section>
+        Quize 
+    </section>
+
+
+    <script src="{{url_for('static',filename = 'data.js')}}"></script>
+    <!-- <script src="{{ url_for('static', filename='js/main.js') }}"></script> -->
+
+</body>
+
+</html>
